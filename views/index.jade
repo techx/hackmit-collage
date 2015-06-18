@@ -1,0 +1,11 @@
+doctype html
+html
+  script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+  script(src='/javascripts/main.js')
+  head
+    title HackMIT collage
+    meta(charset='UTF-8')
+  body
+    fb:login-button(scope='public_profile,email', onlogin='checkLoginState();')#fb
+    #status
+    img#img
