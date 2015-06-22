@@ -3,9 +3,10 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     getInfo();
   } else if (response.status === 'not_authorized') {
-    document.getElementById('status').innerHTML = 'Please log into this app.';
+    //$("#info").append(" please log into this app")
   } else {
-    document.getElementById('status').innerHTML = 'Please log into Facebook.';
+    //$("#info").append(" please log into Facebook")
+
   }
 }
 
@@ -55,9 +56,9 @@ function getInfo() {
       "id" : response.id
     };
     $.post("/addNew", data, function(res){
-      $('#status').html('Thank you, ' + response.name + '! Your response has been recorded') ;
+      $('#info').html('Thank you, ' + response.name + '! Your response has been recorded') ;
       var url = "https://graph.facebook.com/"+ response.id +"/picture?type=large";
-      $('#img').attr("src", url);
+      $('#profile-pic').attr("src", url);
     });
   });
 }

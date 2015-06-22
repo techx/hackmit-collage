@@ -1,8 +1,50 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    width: 500px;
+    margin: 0px auto;
+    background: #e76482;
+    font-family: "Montserrat", sans-serif
 }
 
 a {
   color: #00B7FF;
+}
+
+h2 {
+  font-size: 3em;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 40px 0px 10px
+}
+
+p{
+    color: #fafafa;
+    font-family: "Lato", sans-serif;
+
+}
+
+#disclaimer {
+    color: #F0B4B4;
+    font-size: .8em;
+}
+
+.fb_iframe_widget {
+    width: 100%;
+    text-align: center;
+}
+
+#profile-pic {
+    margin: 0 auto;
+    display: block;
+    border-radius: 20%;
+}
+
+@media all and (max-width: 550px) {
+    body {
+        width: 90%;
+    }
+    h2{
+        font-size: 2em;
+    }
+
 }
