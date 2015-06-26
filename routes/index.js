@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var basicAuth = require('basic-auth-connect');
+
+var auth = basicAuth('admin', "pass");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -46,14 +49,22 @@ router.post('/addNew' , function(req , res){
     });
 });
 
+router.get('/submissions', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
 //TODO add authentication if we want this
-router.get('/all', function(req, res){
-    // console.log("getting userlist")
-    // var db = req.db;
-    // db.collection('users').find().toArray(function (err, items) {
-    //     console.log(items)
-    //     res.json(items);
-    // });
+router.get('/all', auth,  function(req, res){
+    console.log("getting userlist")
+    var db = req.db;
+    db.collection('users').find().toArray(function (err, items) {
+        console.log(items)
+        users = {
+            "users" : items
+        }
+        // res.json(users);
+        res.render('users' , users)
+    });
 });
 
 module.exports = router;

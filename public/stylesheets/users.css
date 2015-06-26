@@ -1,0 +1,29 @@
+body {
+    width: 90%;
+    margin: 0px auto;
+    background: #e76482;
+    font-family: "Montserrat", sans-serif;
+    color: #fafafa;
+    font-family: "Lato", sans-serif;
+    font-size: 1.2em;
+}
+
+.user {
+  height: 200px;
+  display: inline-block;
+  float: left;
+  margin: 10px 10px 2px 10px
+}
+
+.name {
+  display: block;
+  text-align: center;
+}
+
+h2 {
+  font-size: 3em;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 40px 0px 10px
+}

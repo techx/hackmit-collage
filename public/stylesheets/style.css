@@ -28,15 +28,13 @@ p{
     font-size: .8em;
 }
 
-.fb_iframe_widget {
-    width: 100%;
+#fb-btn {
     text-align: center;
 }
 
 #profile-pic {
     margin: 0 auto;
     display: block;
-    border-radius: 20%;
 }
 
 @media all and (max-width: 550px) {

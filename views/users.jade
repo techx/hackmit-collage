@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+      title HackMIT collage sumissions (Team Only)
+      meta(charset='UTF-8')
+      link(rel='stylesheet', href='/stylesheets/users.css')
+
+    body
+    h2 All Submissions
+    div#users
+      each user, i in users
+        span.user
+            img(src="https://graph.facebook.com/#{user.id}/picture?type=large")
+            span.name #{user.name}
