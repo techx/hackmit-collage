@@ -65,4 +65,16 @@ router.get('/all', auth,  function(req, res){
     });
 });
 
+router.get('/allIDs', auth,  function(req, res){
+    var db = req.db;
+    var ids = []
+    db.collection('users').find().toArray(function (err, items) {
+        for (i in items) {
+            ids.push(items[i].id)
+        }
+        res.json(ids);
+    });
+});
+
+
 module.exports = router;
