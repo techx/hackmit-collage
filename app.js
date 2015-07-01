@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongo = require('mongoskin');
-var db = mongo.db("mongodb://localhost:27017/emailannoyer", {native_parser:true});
+// var db = mongo.db("mongodb://localhost:27017/emailannoyer", {native_parser:true});
 
 
 var db = mongo.db(process.env.HACK_COLLAGE_MONGOLAB_URI, {native_parser:true});

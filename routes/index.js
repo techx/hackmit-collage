@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var basicAuth = require('basic-auth-connect');
 
-var auth = basicAuth('admin', "pass");
+var auth = basicAuth('admin', process.env.HACK_COLLAGE_ADMIN_PASS);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -53,17 +53,15 @@ router.get('/submissions', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-//TODO add authentication if we want this
 router.get('/all', auth,  function(req, res){
-    console.log("getting userlist")
+    console.log("getting userlist");
     var db = req.db;
     db.collection('users').find().toArray(function (err, items) {
-        console.log(items)
+        console.log(items);
         users = {
             "users" : items
         }
-        // res.json(users);
-        res.render('users' , users)
+        res.render('users' , users);
     });
 });
 
