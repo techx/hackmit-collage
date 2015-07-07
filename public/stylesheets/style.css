@@ -30,6 +30,13 @@ p{
 
 #fb-btn {
     text-align: center;
+    height: 90px;
+}
+
+#fb {
+  padding-top: 30px;
+  min-height: 56px;
+  display: none;
 }
 
 #profile-pic {

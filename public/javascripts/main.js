@@ -1,10 +1,19 @@
 function statusChangeCallback(response) {
   console.log(response);
+
   if (response.status === 'connected') {
     getInfo();
   } else if (response.status === 'not_authorized') {
+    $("#loading").hide();
+    $("#fb").css("display", "inline-block")
+    $("#info").show();
+    console.log("not autorized")
     //$("#info").append(" please log into this app")
   } else {
+
+    $("#loading").hide();
+    console.log("Somethibg")
+    $("#fb").css("display", "inline-block")
     //$("#info").append(" please log into Facebook")
 
   }
@@ -45,8 +54,8 @@ FB.getLoginStatus(function(response) {
 
 //Get userInfo from graphAPI and send to backend server.
 function getInfo() {
-  $("#status").html("Loading...");
-  $("#fb").hide();
+
+  $("#loading").show();
 
   FB.api('/me', function(response) {
     console.log('Successful login for: ' + response.name);
@@ -56,8 +65,10 @@ function getInfo() {
       "id" : response.id
     };
     $.post("/addNew", data, function(res){
+      $('#fb-btn').hide();
       $('#info').html('Thank you, ' + response.name + '! Your response has been recorded') ;
       var url = "https://graph.facebook.com/"+ response.id +"/picture?type=large";
+      $("#loading").hide()
       $('#profile-pic').attr("src", url);
     });
   });
