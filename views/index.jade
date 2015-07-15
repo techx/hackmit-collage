@@ -1,11 +1,11 @@
 doctype html
 html
-  script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+  script(src='//code.jquery.com/jquery-2.1.4.min.js')
   script(src='/javascripts/main.js')
   link(rel='stylesheet', href='/stylesheets/style.css')
-  link(rel="stylesheet", href='http://fonts.googleapis.com/css?family=Montserrat:400,700')
+  link(rel="stylesheet", href='//fonts.googleapis.com/css?family=Montserrat:400,700')
 
-  link(rel="stylesheet", href='http://fonts.googleapis.com/css?family=Lato:300')
+  link(rel="stylesheet", href='//fonts.googleapis.com/css?family=Lato:300')
 
   head
     title HackMIT collage
@@ -15,7 +15,7 @@ html
     p#info We want to do something awesome with hacker's profile pictures, if you are interested in being part of this experiment, please log in with Facebook.
     img#profile-pic
     div#fb-btn
-        img(src="images/loading.svg" alt="loading")#loading
+        #loading loading...
         fb:login-button(scope='public_profile', onlogin='checkLoginState();', data-size='large')#fb
     p#disclaimer Please note that this is completely optional and will not affect the lottery in any way. We only get your public profile and only plan on using your profile picture. By completing this process you give us the right to use your picture for any HackMIT related media.
 
