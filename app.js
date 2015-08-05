@@ -1,3 +1,6 @@
+// Load dotfiles
+require('dotenv').load();
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,7 +12,7 @@ var mongo = require('mongoskin');
 // var db = mongo.db("mongodb://localhost:27017/emailannoyer", {native_parser:true});
 
 
-var db = mongo.db(process.env.HACK_COLLAGE_MONGOLAB_URI, {native_parser:true});
+var db = mongo.db(process.env.HACK_COLLAGE_MONGODB_URI, {native_parser:true});
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
