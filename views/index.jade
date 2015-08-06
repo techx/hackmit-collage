@@ -2,20 +2,35 @@ doctype html
 html
   script(src='//code.jquery.com/jquery-2.1.4.min.js')
   script(src='/javascripts/main.js')
+  script(src="/plugins/semantic-ui/dist/semantic.min.js")
+
   link(rel='stylesheet', href='/stylesheets/style.css')
   link(rel="stylesheet", href='//fonts.googleapis.com/css?family=Montserrat:400,700')
-
   link(rel="stylesheet", href='//fonts.googleapis.com/css?family=Lato:300')
+  link(rel="stylesheet", href="/plugins/semantic-ui/dist/semantic.min.css")
 
   head
-    title HackMIT collage
+    title HackMIT Collage
     meta(charset='UTF-8')
   body
-    h2 HackMIT Collage
-    p#info We want to do something awesome with hacker's profile pictures, if you are interested in being part of this experiment, please log in with Facebook.
-    img#profile-pic
-    div#fb-btn
-        #loading loading...
-        fb:login-button(scope='public_profile', onlogin='checkLoginState();', data-size='large')#fb
-    p#disclaimer Please note that this is completely optional and will not affect the lottery in any way. We only get your public profile and only plan on using your profile picture. By completing this process you give us the right to use your picture for any HackMIT related media.
+
+    div#card
+      div.container
+        div.content
+          div.ui.segment
+            div#pic-container
+
+              div#loading.ui.active.large.inline.loader
+              img#profile-pic.hidden
+              div.overlay
+
+            div#text
+              div.ui.divider
+              div#title HACKMIT
+              div#subtitle collage
+              div#info
+                p We want to do something awesome with hacker's profile pictures.
+                p If you're interested in being a part of this experiment, please log in with Facebook!
+              div#fb-btn
+                fb:login-button(scope='public_profile', onlogin='checkLoginState();', data-size='large')#fb
 

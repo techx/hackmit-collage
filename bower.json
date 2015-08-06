@@ -1,0 +1,20 @@
+{
+  "name": "hackmit-collage",
+  "version": "0.0.0",
+  "homepage": "https://github.com/techx/hackmit-collage",
+  "authors": [
+    "Fernando Trujano <trujano@mit.edu> Edwin Zhang <ehzhang@mit.edu>"
+  ],
+  "description": "prof pic collection",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "semantic-ui": "~2.0.7"
+  }
+}

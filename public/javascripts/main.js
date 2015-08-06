@@ -4,16 +4,15 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     getInfo();
   } else if (response.status === 'not_authorized') {
-    $("#loading").hide();
-    $("#fb").css("display", "inline-block")
+    $("#loading").addClass('hidden');
+    $("#fb").css("display", "inline-block");
     $("#info").show();
-    console.log("not autorized")
+    console.log("not autorized");
     //$("#info").append(" please log into this app")
   } else {
 
-    $("#loading").hide();
-    console.log("Somethibg")
-    $("#fb").css("display", "inline-block")
+    $("#loading").addClass('hidden');
+    $("#fb").css("display", "inline-block");
     //$("#info").append(" please log into Facebook")
 
   }
@@ -66,10 +65,12 @@ function getInfo() {
     };
     $.post("/addNew", data, function(res){
       $('#fb-btn').hide();
-      $('#info').html('Thank you, ' + response.name + '! Your response has been recorded') ;
+
+      $('#info').html("<p> Thank you, " + response.name + "! </p> <p> We've got your submission 😎 </p>");
+
       var url = "https://graph.facebook.com/"+ response.id +"/picture?type=large";
-      $("#loading").hide()
-      $('#profile-pic').attr("src", url);
+      $("#loading").addClass('hidden');
+      $('#profile-pic').attr("src", url).removeClass('hidden');
     });
   });
 }
