@@ -64,6 +64,7 @@ body {
   height: 320px;
   text-align: center;
   background: url(/assets/hackers.png);
+  background-size: cover;
 }
 
 #profile-pic {
