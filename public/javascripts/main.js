@@ -1,5 +1,5 @@
 function statusChangeCallback(response) {
-  console.log(response);
+  // console.log(response);
 
   if (response.status === 'connected') {
     getInfo();
@@ -7,7 +7,7 @@ function statusChangeCallback(response) {
     $("#loading").addClass('hidden');
     $("#fb").css("display", "inline-block");
     $("#info").show();
-    console.log("not autorized");
+    // console.log("not autorized");
     //$("#info").append(" please log into this app")
   } else {
 
@@ -29,10 +29,10 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
 FB.init({
-  appId      : '942948199091459',
+  appId      : '1790981854461766',
   cookie     : true,  // enable cookies to allow the server to access the session
   xfbml      : true,  // parse social plugins on this page
-  version    : 'v2.2' // use version 2.2
+  version    : 'v2.4' // use version 2.2
 });
 
 
