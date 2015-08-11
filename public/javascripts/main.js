@@ -9,6 +9,7 @@ function statusChangeCallback(response) {
     $("#info").show();
     // console.log("not autorized");
     //$("#info").append(" please log into this app")
+
   } else {
 
     $("#loading").addClass('hidden');
@@ -28,18 +29,16 @@ function checkLoginState() {
 }
 
 window.fbAsyncInit = function() {
-FB.init({
-  appId      : '1790981854461766',
-  cookie     : true,  // enable cookies to allow the server to access the session
-  xfbml      : true,  // parse social plugins on this page
-  version    : 'v2.4' // use version 2.2
-});
+  FB.init({
+    appId      : '1790981854461766',
+    cookie     : true,  // enable cookies to allow the server to access the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.4' // use version 2.2
+  });
 
-
-FB.getLoginStatus(function(response) {
-  statusChangeCallback(response);
-});
-
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
 };
 
 // Load the SDK asynchronously
@@ -71,6 +70,10 @@ function getInfo() {
       var url = "https://graph.facebook.com/"+ response.id +"/picture?type=large";
       $("#loading").addClass('hidden');
       $('#profile-pic').attr("src", url).removeClass('hidden');
+
+    })
+    .fail(function(){
+      $('#loading').hide();
     });
   });
 }

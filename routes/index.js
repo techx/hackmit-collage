@@ -11,42 +11,45 @@ router.get('/', function(req, res, next) {
 
 //Adds new user to the DB
 router.post('/addNew' , function(req , res){
-    console.log("Adding new ID to db");
-    var db = req.db;
-    var id = req.body.id;
-    var name = req.body.name;
-    var users = db.collection('users');
+  console.log("Adding new ID to db");
 
-    console.log(req.body);
+  var db = req.db;
+  var id = req.body.id;
+  var name = req.body.name;
+  var users = db.collection('users');
 
-    var newUser ={};
-    newUser['id'] = id;
-    newUser['name'] = name;
+  console.log(req.body);
 
-    users.findOne({id : id}, function(err, result){
-        if (err) console.log("DB Error");
-        else if (result) {
-            console.log("User already exists");
-            console.log(result);
-            res.send("userExists");
+  var newUser ={};
+  newUser['id'] = id;
+  newUser['name'] = name;
+
+  users.findOne({id : id}, function(err, result){
+    if (err) {
+      console.log("DB Error")
+      return res.status(500).send(err);
+    }
+
+    else if (result) {
+      console.log("User already exists");
+      console.log(result);
+      return res.send("userExists");
+    } else {
+      console.log("User not found, adding!");
+
+      console.log(newUser);
+      users.insert(newUser, function(err, doc){
+        if (err) {
+          console.log("DB error");
+          res.send("DB error");
+        } else {
+          console.log("User added to DB!");
+          res.send("success");
         }
-        else {
-            console.log("User not found, adding!");
 
-            console.log(newUser);
-            users.insert(newUser, function(err, doc){
-                if (err) {
-                    console.log("DB error");
-                    res.send("DB error");
-                }
-                else {
-                    console.log("User added to DB!");
-                    res.send("success");
-                }
-
-            }).bind(res);
-        }
-    });
+      }).bind(res);
+    }
+  });
 });
 
 router.get('/submissions', function(req, res, next) {
