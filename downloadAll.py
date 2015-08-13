@@ -1,4 +1,8 @@
-import urllib
+import urllib, urllib2
+import requests
+import os
+import base64
+import json
 
 def getFBPictures(ids):
     '''
@@ -8,13 +12,19 @@ def getFBPictures(ids):
     for id in ids:
         url = 'https://graph.facebook.com/'+ str(id) +'/picture?type=large'
         urllib.urlretrieve(url, "userPictures/" +str(id)+ ".jpg")
-        print url
+        print "Fetching: "+url
 
-ids = [
-"10153081525766725",
-"1018565234822538",
-"10155743716060296",
-"10207658318764442"
-]
+def getAllIDs(username, password):
+  base64string = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
+  headers = {
+    "Authorization": "Basic %s" % base64string
+  }
+  req = urllib2.Request("http://collage.hackmit.org/allIds", '', headers)
+  response = urllib2.urlopen(req)
+  return json.loads(response.read())
 
-getFBPictures(ids)
+if __name__ == '__main__':
+  print "Fetching a list of IDs..."
+  ids = getAllIDs("admin", os.environ["COLLAGE_PASSWORD"])
+  print "Successfully fetched " + str(len(ids)) + " ids."
+  getFBPictures(ids)
